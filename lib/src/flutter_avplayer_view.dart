@@ -10,6 +10,7 @@ class FlutterAVPlayerView extends StatelessWidget {
     Key? key,
     this.urlString,
     this.filePath,
+    this.autoLoop = false,
   })  : assert(urlString != null || filePath != null),
         super(key: key);
 
@@ -18,21 +19,22 @@ class FlutterAVPlayerView extends StatelessWidget {
 
   /// Asset name/path for the video file that needs to be played.
   final String? filePath;
+  final bool autoLoop;
 
   /// This function packs the available parameters to be sent to native code.
   /// It will check for the URL first, if it is available, then it will be used,
   /// otherwise filePath will be used.
   /// It is preferred that only one of urlString or filePath is used at a time,
   /// if both are provided, application will prioritise urlString.
-  Map getCreateParams() {
-    Map params = {
+  Map<String, dynamic> getCreateParams() {
+    Map<String, dynamic> params = {
       'class': 'FlutterAVPlayerView',
     };
-    if (urlString != null && urlString!.length > 0) {
-      params['url'] = urlString;
-    } else {
-      params['file'] = filePath;
-    }
+
+    params['url'] = urlString;
+    params['file'] = filePath;
+    params['autoLoop'] = autoLoop;
+
     return params;
   }
 

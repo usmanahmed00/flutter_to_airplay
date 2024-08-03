@@ -28,9 +28,9 @@ class PickFromURLView extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: FlutterAVPlayerView(
-              // filePath: 'assets/videos/butterfly.mp4',
               urlString:
                   'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+              autoLoop: true,
             ),
           ),
         ),
