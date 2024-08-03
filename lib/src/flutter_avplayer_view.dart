@@ -31,12 +31,8 @@ class FlutterAVPlayerView extends StatelessWidget {
       'class': 'FlutterAVPlayerView',
     };
 
-    if (urlString != null && urlString!.length > 0) {
-      params['url'] = urlString ?? '';
-    } else {
-      params['file'] = filePath ?? '';
-    }
-
+    params['url'] = urlString;
+    params['file'] = filePath;
     params['autoLoop'] = autoLoop;
 
     return params;
